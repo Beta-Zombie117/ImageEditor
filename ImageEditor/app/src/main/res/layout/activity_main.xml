@@ -10,8 +10,28 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.mihai.imageeditor.MainActivity">
 
-    <TextView
+    <ImageView
+        android:id="@+id/imgView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"></ImageView>
+
+    <Button
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_alignEnd="@+id/buttonLoadImage"
+        android:layout_alignStart="@+id/buttonLoadImage"
+        android:layout_below="@+id/buttonLoadImage"
+        android:layout_marginTop="38dp"
+        android:text="Take Photo" />
+
+    <Button
+        android:id="@+id/buttonLoadImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:text="Browse Image" />
 </RelativeLayout>
