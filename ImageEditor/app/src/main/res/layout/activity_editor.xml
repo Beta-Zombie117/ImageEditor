@@ -4,9 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
-    tools:context=".MainActivity">
-    >
+    tools:context="com.example.mihai.imageeditor.MainActivity">
 
 
     <Button
@@ -29,26 +27,22 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true">
+
         <ImageView
             android:id="@+id/imgView"
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1">
-
         </ImageView>
 
-
-
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/ImageButton"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_gravity="right|bottom"
             android:layout_margin="15dp"
             android:background="@drawable/circle"
+            android:onClick="editclick"
             android:src="@drawable/ic_create_black_24dp" />
     </FrameLayout>
-
-
 </LinearLayout>

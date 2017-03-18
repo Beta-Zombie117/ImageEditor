@@ -48,21 +48,43 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+        Button buttonTakeImage = (Button) findViewById(R.id.buttonTakeImage) ;
+        buttonTakeImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        Uri.parse(MediaStore.ACTION_IMAGE_CAPTURE));
+                startActivityForResult(i, CAMERA_REQUEST);
+                                               }
+
+
+        }
+        );
+
+
+
+
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-    public void buttonTakeImage(View v) {
-        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(cameraIntent, CAMERA_REQUEST);
 
-    }
+//
+//    public void buttonTakeImage(View v) {
+//        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//        startActivityForResult(cameraIntent, CAMERA_REQUEST);
+//
+//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         setContentView(R.layout.activity_editor);
+
+
 
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
             Uri selectedImage = data.getData();
@@ -82,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK && null != data){
+        else if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK && null != data){
             Bitmap cameraImage = (Bitmap) data.getExtras().get("data");
 
             ImageView imageView = (ImageView) findViewById(R.id.imgView);
@@ -90,6 +112,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
+
+
     }
 
 
@@ -129,5 +153,10 @@ public class MainActivity extends AppCompatActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         AppIndex.AppIndexApi.end(client, getIndexApiAction());
         client.disconnect();
+    }
+
+    public void editclick(View view) {
+        Intent myIntent = new Intent(this, FiltersHandler.class);
+        startActivity(myIntent);
     }
 }
